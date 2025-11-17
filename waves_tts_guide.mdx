@@ -5,17 +5,21 @@ description: "Stream text-to-speech audio in real time using the Waves TTS WebSo
 
 # **Waves Streaming Text-to-Speech (TTS)**
 
-- Waves Streaming TTS lets you convert text into speech **in real time** using a WebSocket connection. 
+- Waves Streaming TTS lets you convert text into speech **in real time** using a WebSocket connection.
 - The API streams **audio chunks** instantly, making it ideal for assistants, chatbots, and interactive voice apps.
 - It provides **low latency** audio generation, so your application can speak back instantly while text is still being sent.
 
 ## **🔗 Endpoint**
 
+- This is the WebSocket URL where you connect to start receiving streamed audio.
+
 ```
 wss://api.smallest.ai/v4/tts/stream
 ```
 
-## **Required Headers** 
+## **Required Headers**
+
+- Headers are **extra information** you send along with your API request so the server can understand who you are and what you want.
 
 These headers must be included during the WebSocket upgrade request :
 
@@ -24,7 +28,7 @@ Authorization: Bearer YOUR_API_KEY
 Content-Type: application/json
 ```
 
-## **JavaScript Example** 
+## **JavaScript Example**
 
 ```javascript
 const socket = new WebSocket("wss://api.smallest.ai/v4/tts/stream", {
@@ -50,7 +54,7 @@ socket.onmessage = (event) => {
 socket.onclose = () => console.log("Stream ended");
 ```
 
-## **Sample Streaming Response** 
+## **Sample Streaming Response**
 
 ```javascript
 {
