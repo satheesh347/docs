@@ -15,7 +15,7 @@ description: "Stream text-to-speech audio in real time using the Waves TTS WebSo
 wss://api.smallest.ai/v4/tts/stream
 ```
 
-## **Required Headers**
+## **Required Headers** 
 
 These headers must be included during the WebSocket upgrade request :
 
@@ -24,7 +24,7 @@ Authorization: Bearer YOUR_API_KEY
 Content-Type: application/json
 ```
 
-## **JavaScript Example**
+## **JavaScript Example** 
 
 ```javascript
 const socket = new WebSocket("wss://api.smallest.ai/v4/tts/stream", {
@@ -50,7 +50,7 @@ socket.onmessage = (event) => {
 socket.onclose = () => console.log("Stream ended");
 ```
 
-## **Sample Streaming Response**
+## **Sample Streaming Response** 
 
 ```javascript
 {
@@ -67,6 +67,6 @@ Final message :
 }
 ```
 
-## **💡 Tip **
+## **💡Tip**
 
 For smooth playback, configure your WebSocket client to handle **binary data (**`ArrayBuffer`**)** instead of plain text Waves streams raw audio frames.
