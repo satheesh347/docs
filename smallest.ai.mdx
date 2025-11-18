@@ -1,11 +1,11 @@
 ---
-title: "Getting Started with Waves TTS"
+title: "Waves Text-to-Speech : Quick Start Guide"
 description: "Convert text into human like speech instantly using Waves Lightning TTS. This one page guide helps you set up your API key, call the endpoint, and build real-time voice features."
 ---
 
 # **How to Use Waves Text-to-Speech (TTS)**
 
-Waves lets you convert any text into **hyper-realistic speech in under 100 ms**.\
+Waves lets you convert any text into **hyper realistic speech in under 100 ms**.\
 This quick guide shows you how to make your first TTS request using cURL, Python, or JavaScript.
 
 ## **1. Get Your API Key**
@@ -19,11 +19,16 @@ export SMALLEST_API_KEY="your_api_key_here"
 
 ## **2. API Endpoint**
 
+- This is the WebSocket URL where you connect to start receiving streamed audio.
+
 ```bash
 https://waves-api.smallest.ai/api/v1/lightning/get_speech
 ```
 
 ## **3. Required Headers**
+
+- Headers are **extra information** you send along with your API request so the server can understand who you are and what you want.
+- These headers must be included during the WebSocket upgrade request :
 
 ```bash
 Authorization: Bearer YOUR_API_KEY
@@ -32,20 +37,9 @@ Content-Type: application/json
 
 ## **4. Make Your First Request**
 
-```bash
-curl -X POST https://waves-api.smallest.ai/api/v1/lightning/get_speech \
-  -H "Authorization: Bearer $SMALLEST_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "text": "Welcome to Waves, the fastest text to speech platform.",
-    "voice_id": "default",
-    "sample_rate": 24000,
-    "speed": 1.0
-  }' \
-  --output speech.wav
-```
-
 ```python
+##Python
+
 from smallestai.waves import WavesClient
 
 client = WavesClient(api_key="YOUR_API_KEY")
@@ -60,6 +54,8 @@ client.synthesize(
 ```
 
 ```javascript
+//JavaScript
+
 const fs = require('fs');
 
 const response = await fetch(
@@ -94,18 +90,18 @@ fs.writeFileSync('speech.wav', Buffer.from(buffer));
 
 | Parameter     | Type   | Default     | What it Does                                       |
 | :------------ | :----- | :---------- | :------------------------------------------------- |
-| `text`        | string | —           | Text you want to convert (recommended ≤500 chars)  |
+| `text`        | string | ---         | Text you want to convert (recommended ≤500 chars)  |
 | `voice_id`    | string | `"default"` | Choose a built-in or custom cloned voice           |
 | `sample_rate` | int    | `24000`     | 8k / 16k / 24k / 48k audio options                 |
 | `speed`       | float  | `1.0`       | Adjust speaking speed (0.5–2.0)                    |
 | `consistency` | float  | `0.5`       | Reduces word repetition (Lightning Large only)     |
 | `similarity`  | float  | `0.7`       | Match the style of reference audio (cloned voices) |
 
-## **Pro Tips**
+## **Tips**
 
-- ⚡ **Ultra fast :** Lightning generates ~10 seconds of speech in ~100 ms → great for real-time apps.
-- 🎙️ **Voice Cloning :** Use your cloned `voice_id` and set `model="lightning-large"` for higher similarity.
-- 🎧 **Audio Quality :**
-  - 24k → best balance
-  - 48k → studio quality
-  - 8k → telephony / call center use
+- **Ultra fast :** Lightning generates ~10 seconds of speech in ~100 ms → great for real-time apps.
+- **Voice Cloning :** Use your cloned `voice_id` and set `model="lightning-large"` for higher similarity.
+- **Audio Quality :**
+- 24k → best balance
+- 48k → studio quality
+- 8k → telephony / call center use
