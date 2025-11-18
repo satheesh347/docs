@@ -90,7 +90,7 @@ fs.writeFileSync('speech.wav', Buffer.from(buffer));
 
 | Parameter     | Type   | Default     | What it Does                                       |
 | :------------ | :----- | :---------- | :------------------------------------------------- |
-| `text`        | string | ---         | Text you want to convert (recommended ≤500 chars)  |
+| `text`        | string | --          | Text you want to convert (recommended ≤500 chars)  |
 | `voice_id`    | string | `"default"` | Choose a built-in or custom cloned voice           |
 | `sample_rate` | int    | `24000`     | 8k / 16k / 24k / 48k audio options                 |
 | `speed`       | float  | `1.0`       | Adjust speaking speed (0.5–2.0)                    |
@@ -102,6 +102,6 @@ fs.writeFileSync('speech.wav', Buffer.from(buffer));
 - **Ultra fast :** Lightning generates ~10 seconds of speech in ~100 ms → great for real-time apps.
 - **Voice Cloning :** Use your cloned `voice_id` and set `model="lightning-large"` for higher similarity.
 - **Audio Quality :**
-- 24k → best balance
-- 48k → studio quality
-- 8k → telephony / call center use
+  - 24k → best balance
+  - 48k → studio quality
+  - 8k → telephony / call center use
